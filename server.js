@@ -3,11 +3,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-express.static('lib');
-express.static('app');
-
 app.get('/', function(req, res){
-	//console.log(req);
   res.sendFile(__dirname + '/index.html');
 });
 
