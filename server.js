@@ -3,6 +3,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
@@ -13,12 +14,14 @@ app.use("/app", express.static(__dirname + '/app'));
 io.on('connection', function(socket){
   console.log('user connected');
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+    socket.emit('chat message', msg);
+	//socket.broadcast.emit('chat message', msg);
   });
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
 });
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+
+http.listen(8080, function(){
+  console.log('listening on *:8080');
 });
