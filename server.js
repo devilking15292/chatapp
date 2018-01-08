@@ -14,7 +14,8 @@ app.use("/app", express.static(__dirname + '/app'));
 io.on('connection', function(socket){
   console.log('user connected');
   socket.on('chat message', function(msg){
-    socket.emit('chat message', msg);
+	//console.log(msg);
+    io.emit('chat message', msg);
 	//socket.broadcast.emit('chat message', msg);
   });
   socket.on('disconnect', function(){
