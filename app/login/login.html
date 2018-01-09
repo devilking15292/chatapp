@@ -1,0 +1,22 @@
+<section layout="column" flex layout-fill layout-align="center center" class="login">
+	<div layout="row"  layout-align="center center">
+		<md-card class="loginRegisterCards" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+			<md-toolbar>
+				<div class="md-toolbar-tools" layout="row" layout="space-around start">
+					<h2 layout-padding layout-margin md-truncate flex>Take a Name</h2>
+				</div>
+			</md-toolbar>
+			<md-card-content layout="row" layout-fill style="width: 50vw;">
+				<div flex layout="column" layout-align="end auto" layout-padding>
+					<md-input-container>
+						<label>User Name</label>
+						<input ng-model="loginName">
+					</md-input-container>
+					<md-button ng-click="login()">
+						Login
+					</md-button>
+				</div>
+			</md-card-content>
+		</md-card>
+	</div>
+</section>
