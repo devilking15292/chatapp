@@ -19,7 +19,7 @@ io.on('connection', function(socket){
 	socket.user = null;
   
 	socket.on('login', function(userData) {
-		userData = userData.toLowerCase();
+		userData = userData.toLowerCase().trim();
 		if(!isADuplicate(userData)) {
 			usersData.userCount++;
 			console.log('logginIn', userData);
