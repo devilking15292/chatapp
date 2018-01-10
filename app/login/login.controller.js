@@ -8,10 +8,14 @@
 			$state.go('chat');
 		}
 		$scope.login = login;
-		$scope.loginName = "";
 		
 		function login() {
-			socketService.emit('login', $scope.loginName);
+			var loginName = document.getElementById("name").value;
+			if(loginName != "") {
+				socketService.emit('login', loginName);
+			} else {
+				alert("Enter a fucking name, you moron!");
+			}
 		}
 	}
 })(angular)

@@ -26,10 +26,27 @@
 	<script src="/app/app.router.js"></script>
 
   </head>
-	<body ng-controller="mainController">
-		<md-button ng-if="" ng-click="logout()">
+	<body ng-controller="mainController" layout="row" layout-fill>
+		<md-sidenav
+				class="md-sidenav-left"
+				md-component-id="left"
+				md-is-locked-open="true"
+				md-whiteframe="4">
+
+			  <md-toolbar class="md-theme-indigo">
+				<h1 class="md-toolbar-tools">Active users {{userList.userCount}}</h1>
+			  </md-toolbar>
+			  <md-content layout-padding>
+				<div ng-repeat="user in userList.users" >
+					<md-button class="md-primary" >
+						{{user}}
+					</md-button>
+				</div>
+			  </md-content>
+		</md-sidenav>
+		<div ui-view flex layout-fill></div>
+		<md-button ng-click="logout()">
 			logout
 		</md-button>
-		<div ui-view flex layout-fill></div>
 	</body>
 </html>

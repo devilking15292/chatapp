@@ -4,13 +4,11 @@
   "description": "chat app for com",
   "main": "index.js",
   "scripts": {
-    "test": "none"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.14.0",
-    "socket.io": "^2.0.4",
-	"socket.io-pubsub": "^1.1.0",
-	"@google-cloud/pubsub": "^0.14.0"
+    "socket.io": "^2.0.4"
   },
   "repository": {
     "type": "git",

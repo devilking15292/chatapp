@@ -11,8 +11,13 @@
 		$scope.send = send;
 		
 		function send(){
-			socketService.emit('chat message', $scope.data);
-			$scope.data="";
+			var chat = document.getElementById("chat").value;
+			if(chat != "") {
+				socketService.emit('chat message', chat);
+				$scope.data="";
+			} else {
+				alert("what the fuck are you trying to send ? type something..!");
+			}
 		}
 	}
 })(angular)
