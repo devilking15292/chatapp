@@ -1,0 +1,13 @@
+<section layout="column" flex layout-align="center center" class="login">
+	<md-toolbar class="md-theme-indigo">
+		<h1 class="md-toolbar-tools">Active users {{userList.userCount}}</h1>
+	</md-toolbar>
+    <div id="messages">
+	</div>
+	<div style="position:absolute;bottom:0" layout="row">
+		<input id="chat" flex-80/>
+		<md-button class="md-primary" ng-click="send()" flex-20>
+			send
+		</md-button>
+    </div>
+</section>

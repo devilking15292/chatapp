@@ -6,7 +6,7 @@
 	function router($stateProvider, $urlRouterProvider) {
 		$stateProvider
 			.state('login', {
-				url: '/',
+				url: '/login',
 				controller  : "loginController",
 				templateUrl : "./app/login/login.html"
 			})
@@ -14,6 +14,16 @@
 				url: '/chat',
 				controller  : "chatController",
 				templateUrl : "./app/chat/chat.html"
+			})
+			.state('loginMobile', {
+				url: '/loginMobile',
+				controller  : "loginController",
+				templateUrl : "./app/login/loginMobile.html"
+			})
+			.state('chatMobile', {
+				url: '/chatMobile',
+				controller  : "chatController",
+				templateUrl : "./app/chat/chatMobile.html"
 			})
 		$urlRouterProvider.otherwise('/');
 	}

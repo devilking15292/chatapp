@@ -19,7 +19,7 @@ io.on('connection', function(socket){
 	socket.user = null;
   
 	socket.on('login', function(userData) {
-		userData = userData.toLowerCase().trim();
+		userData = userData.toLowerCase().replace(/\s/g, "");
 		if(!isADuplicate(userData)) {
 			usersData.userCount++;
 			console.log('logginIn', userData);
@@ -80,7 +80,7 @@ function removeUser(socket) {
 }
 
 function disconnectUser(socket) {
-	socket.emit('loggedOut');
+	socket.emit('loggedOut', {users: usersData});
 	socket.disconnect('unauthorized');
 	removeUser(socket);
 }

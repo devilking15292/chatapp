@@ -6,6 +6,7 @@
 	function service() {
 		var service = io.connect();
 		service.user = null;
+		
 		return service;
 	}
 })(angular, io)

@@ -5,7 +5,10 @@
 		
 	function controller($scope, $state, socketService) {
 		if(!socketService.user) {
-			$state.go('login');
+			if(socketService.isMobile)
+				$state.go('loginMobile');
+			else
+				$state.go('login');
 		}
 		$scope.data = "";
 		$scope.send = send;
@@ -14,7 +17,7 @@
 			var chat = document.getElementById("chat").value;
 			if(chat != "") {
 				socketService.emit('chat message', chat);
-				$scope.data="";
+				document.getElementById("chat").value="";
 			} else {
 				alert("what the fuck are you trying to send ? type something..!");
 			}
