@@ -3,7 +3,7 @@
 		.module("myApp")
 		.controller('loginController', controller);
 		
-	function controller($scope, $state, socketService) {
+	function controller($scope, $state, $mdToast, socketService) {
 		if(socketService.user) {
 			if(socketService.isMobile)
 				$state.go('chatMobile');
@@ -19,7 +19,14 @@
 			if(loginName != "") {
 				socketService.emit('login', loginName);
 			} else {
-				alert("Enter a fucking name, you moron!");
+				//alert("Enter a fucking name, you moron!");
+				$mdToast.show(
+					$mdToast
+						.simple()
+						.textContent("Enter a fucking name, you moron!")
+						.position("top left")
+						.hideDelay(3000)
+				);
 			}
 		}
 	}

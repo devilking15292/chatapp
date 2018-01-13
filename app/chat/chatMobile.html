@@ -1,12 +1,40 @@
-<section layout="column" flex layout-align="center center" class="login">
-	<md-toolbar class="md-theme-indigo">
-		<h1 class="md-toolbar-tools">Active users {{userList.userCount}}</h1>
+<style>
+	img.dpImg {
+		width: 90px !important;
+		height: 90px !important;
+	}
+</style>
+<section layout="column" flex layout-fill layout-align="space-between" class="login">
+	<md-toolbar style="background-color:white; color:Black">
+		<div layout="row" layout-align="space-between">
+			<md-button class="md-primary" ng-click="toggleFaces()" flex="5">
+				M
+			</md-button>
+			<h1 class="md-toolbar-tools">Active<span style="padding:5px;" ng-bind="userList.userCount"></span></h1>
+			<md-button class="md-primary" ng-click="logout()" flex="5">
+				L
+			</md-button>
+		</div>
+		<div ng-if="showFaces" layout="row" layout-padding style="overflow-y:scroll">
+			<div ng-repeat="user in userList.users" class="dpImg" layout="column">
+				<img ng-if="($index % 2)==0" class="dpImg" src="./images/RR3yaDY.png" />
+				<img ng-if="!(($index % 2)==0)" class="dpImg"  src="./images/C23xg8BXEAAcJbw.png" />
+				<span style="margin:auto" ng-bind="user"></span>
+			</div>
+		</div>
 	</md-toolbar>
-    <div id="messages">
+    <div id="messages" layout-padding style="width:100%;max-height:70%;overflow-y:scroll;" flex="auto">
 	</div>
-	<div style="position:absolute;bottom:0" layout="row">
-		<input id="chat" flex-80/>
-		<md-button class="md-primary" ng-click="send()" flex-20>
+	<div flex="10" style="width:100%" layout="row">
+		<md-button class="md-primary" flex="5">
+			A
+		</md-button>
+		<!--<input id="chat" flex="shrink"/>-->
+		<md-input-container flex="shrink">
+				<label>Type something..</label>
+				<input id="chat"/>
+			</md-input-container>
+		<md-button class="md-primary" ng-click="send()" flex="5">
 			send
 		</md-button>
     </div>

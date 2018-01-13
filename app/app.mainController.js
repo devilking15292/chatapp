@@ -3,7 +3,7 @@
 		.module("myApp")
 		.controller('mainController', controller);
 		
-	function controller($scope, $state, $mdMedia, socketService) {
+	function controller($scope, $state, $mdMedia, $mdToast, socketService) {
 		$scope.logout = logout;
 		$scope.loginName = "";
 		$scope.loggedIn = false;
@@ -43,32 +43,51 @@
 		});
 		
 		socketService.on('loggedOut', function() {
-			socketService.user = null;
+			/*socketService.user = null;
 			$scope.userList = {};
 			$scope.loggedIn = false;
 			if(socketService.isMobile)
 				$state.go('loginMobile');
 			else
-				$state.go('login');
+				$state.go('login');*/
+			location.reload();
 		})
 		
 		socketService.on('chooseDiffName', function() {
-			alert("someone's thinking like you, they already took that name");
+			//alert("someone's thinking like you, they already took that name");
+			$mdToast.show(
+				$mdToast
+					.simple()
+					.textContent("someone's thinking like you, they already took that name")
+					.position("top left")
+					.hideDelay(3000)
+			);
 		})
 		
 		socketService.on('fakeLog', function() {
 			socketService.user = null;
-			alert("sorry but you have to login");
-			if(socketService.isMobile)
+			//alert("sorry but you have to login");
+			/*if(socketService.isMobile)
 				$state.go('loginMobile');
 			else
-				$state.go('login');
+				$state.go('login');*/
+			$mdToast.show(
+				$mdToast
+					.simple()
+					.textContent("sorry but you have to login")
+					.position("top left")
+					.hideDelay(3000)
+			);
+			location.reload();
+			
 		})
 		
 		function addToView(msg) {
 			var span=document.createElement("div");
 			span.appendChild(document.createTextNode(msg));
-			document.getElementById("messages").appendChild(span);
+			var mesArea = document.getElementById("messages");
+			mesArea.appendChild(span);
+			mesArea.scrollTop = mesArea.scrollHeight;
 		}
 	}
 })(angular)

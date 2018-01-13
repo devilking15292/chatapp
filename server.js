@@ -12,6 +12,7 @@ app.get('/', function(req, res){
 app.use("/lib", express.static(__dirname + '/lib'));
 app.use("/app", express.static(__dirname + '/app'));
 app.use("/style", express.static(__dirname + '/style'));
+app.use("/images", express.static(__dirname + '/images'));
 
 io.on('connection', function(socket){
 	
