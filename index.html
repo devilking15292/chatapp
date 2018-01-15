@@ -2,34 +2,29 @@
 <html ng-app="myApp">
   <head>
     <title>La La Chat Land</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/lib/socket.io/socket.io.js"></script>
-    <!--<script src="/lib/jquery/jquery-1.11.1.js"></script>
-    <script src="/app/app.js">	</script>-->
-	
-	<link rel="stylesheet" href="/style/angular-material.css">
-	<script src="/lib/angular/angular.min.js"></script>
-	<script src="/lib/angular/angular-ui-router.min.js"></script>
-	<script src="/lib/angular/angular-animate.min.js"></script>
-	<script src="/lib/angular/angular-aria.min.js"></script>
-	
-	<script src="/lib/angular/angular-material.min.js"></script>
-	
-	<script src="/lib/jquery/jquery-1.11.1.js"></script>
-	<script src="/app/app.module.js"></script>
-	
-	<script src="/app/app.mainController.js"></script>
-	<script src="/app/login/login.controller.js"></script>
-	<script src="/app/chat/chat.controller.js"></script>
-	<script src="/app/services/socket.service.js"></script>
-	<script src="/app/services/chatStore.service.js"></script>
-	<script src="/app/directive/chat/chat.directive.js"></script>
-	
-	<script src="/app/app.router.js"></script>
-	<style>
-	</style>
-
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/style/bootstrap.min.css">
+		<link rel="stylesheet" href="/style/angular-material.css">
+		<script src="/lib/socket.io/socket.io.js"></script>
+		
+		<script src="/lib/angular/angular.min.js"></script>
+		<script src="/lib/angular/angular-ui-router.min.js"></script>
+		<script src="/lib/angular/angular-animate.min.js"></script>
+		<script src="/lib/angular/angular-aria.min.js"></script>
+		
+		<script src="/lib/angular/angular-material.min.js"></script>
+		
+		<script src="/lib/jquery/jquery-1.11.1.js"></script>
+		<script src="/app/app.module.js"></script>
+		
+		<script src="/app/app.mainController.js"></script>
+		<script src="/app/login/login.controller.js"></script>
+		<script src="/app/chat/chat.controller.js"></script>
+		<script src="/app/services/socket.service.js"></script>
+		<script src="/app/services/chatStore.service.js"></script>
+		<script src="/app/directive/chat/chat.directive.js"></script>
+		
+		<script src="/app/app.router.js"></script>
   </head>
 	<body ng-controller="mainController" layout="row" layout-fill ng-if="!screenIsSmall">
 		<div ui-view flex layout-fill></div>

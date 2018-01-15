@@ -1,11 +1,31 @@
 <style>
 	img.dpImg {
-		width: 90px !important;
-		height: 90px !important;
+		width: 70px !important;
+		height: 70px !important;
 	}
 
-	.dpImgCon {
-		height: 130px !important;
+	.md-icon-button md-icon {
+		font-size: large;
+	}
+
+	.md-errors-spacer {
+		display: none !important;
+	}
+
+	.chatContainer {
+		margin: 0;
+	}
+
+	#file {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		cursor: inherit;
+		opacity: 0;
+		max-width: 100%;
 	}
 
 	hr {
@@ -19,7 +39,8 @@
 		border-radius: 5px;
 		padding: 5px;
 		width: 100%;
-		background-color:white;
+		background-color: white;
+		word-wrap: break-word;
 	}
 
 	.chatMessage .chatSender {
@@ -34,43 +55,44 @@
 		font-weight: 100;
 	}
 
-	.botMessage {
+	.textCenter {
 		text-align: center;
 	}
 </style>
 <section layout="column" flex layout-fill layout-align="space-between" class="login">
 	<div style="background-color:white; color:Black">
-		<div layout="row" layout-align="space-between">
-			<md-button class="md-primary" ng-click="toggleFaces()" flex="5">
-				M
+		<div layout="row" layout-align="space-between center">
+			<md-button class="md-primary md-icon-button" ng-click="toggleFaces()">
+				<md-icon class="glyphicon glyphicon-align-left"></md-icon>
 			</md-button>
 			<h1 class="md-toolbar-tools">Active<span style="padding:5px;" ng-bind="userList.userCount"></span></h1>
-			<md-button class="md-primary" ng-click="logout()" flex="5">
-				L
+			<md-button class="md-primary md-icon-button" ng-click="logout()">
+				<md-icon class="glyphicon glyphicon-off"></md-icon>
 			</md-button>
 		</div>
 		<div ng-if="showFaces" layout="row"  class="dpImgCon" layout-padding style="overflow-y:scroll">
 			<div ng-repeat="user in userList.users" layout="column">
 				<img ng-if="($index % 2)==0" class="dpImg" src="./images/RR3yaDY.png" />
 				<img ng-if="!(($index % 2)==0)" class="dpImg"  src="./images/C23xg8BXEAAcJbw.png" />
-				<span style="margin:auto" ng-bind="user"></span>
+				<span class="textCenter" ng-bind="user"></span>
 			</div>
 		</div>
 	</div>
-    <div id="messages" layout-padding style="width:100%;overflow-y:scroll;" flex="auto">
+    <div id="messages" layout-padding style="width:100%;overflow-y:scroll;" flex="shrink">
 		<chat ng-repeat="chat in chatStore" chatData="chat"></chat>
 	</div>
-	<div flex="10" style="width:100%" layout="row">
-		<md-button class="md-primary" flex="5">
-			A
+	<div style="width:100%" layout="row">
+		<md-button class="md-primary md-icon-button">
+			<md-icon class="glyphicon glyphicon-paperclip"></md-icon>
+			<input id="file" type="file"/>
 		</md-button>
 		<!--<input id="chat" flex="shrink"/>-->
-		<md-input-container flex="shrink">
-				<label>Type something..</label>
-				<input id="chat"/>
-			</md-input-container>
-		<md-button class="md-primary" ng-click="send()" flex="5">
-			send
+		<md-input-container class="chatContainer" flex="shrink">
+			<label>Type something..</label>
+			<input id="chat"/>
+		</md-input-container>
+		<md-button class="md-primary md-icon-button" ng-click="send()">
+			<md-icon class="glyphicon glyphicon-send"></md-icon>
 		</md-button>
     </div>
 </section>

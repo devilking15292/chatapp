@@ -13,6 +13,7 @@ app.use("/lib", express.static(__dirname + '/lib'));
 app.use("/app", express.static(__dirname + '/app'));
 app.use("/style", express.static(__dirname + '/style'));
 app.use("/images", express.static(__dirname + '/images'));
+app.use("/fonts", express.static(__dirname + '/fonts'));
 
 io.on('connection', function(socket){
 	
