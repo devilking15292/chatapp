@@ -46,7 +46,7 @@ io.on('connection', function(socket){
 			socket.emit('fakeLog');
 		}
 		console.log(this.user);
-		io.emit('chat message', {msg: this.user+": "+ msg});
+		io.emit('chat message', {sender: this.user, msg: msg});
 		refreshTimer(this);
 		//console.log(this.timer);
 	});

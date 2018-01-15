@@ -3,11 +3,13 @@
 		.module("myApp")
 		.controller('mainController', controller);
 		
-	function controller($scope, $state, $mdMedia, $mdToast, socketService) {
+	function controller($scope, $state, $mdMedia, $mdToast, socketService, chatStore) {
 		$scope.logout = logout;
 		$scope.loginName = "";
 		$scope.loggedIn = false;
 		$scope.isMobile = socketService.isMobile = true;
+		$scope.chatStore = chatStore.get();
+		$scope.user = null;
 		
 		if(screen.width > 1000) {
 			$scope.isMobile = socketService.isMobile = false;
@@ -22,17 +24,17 @@
 		}
 		
 		socketService.on('chat message', function(resp){
-			addToView(resp.msg);
+			addToView(resp);
 		});
 		
 		socketService.on('botMessage', function(resp){
-			addToView(resp.msg);
+			addToView(resp);
 			$scope.userList = resp.users;
 			$scope.$apply();
 		});
 		
 		socketService.on('loggedIn', function(resp){
-			socketService.user = resp.msg;
+			$scope.user = socketService.user = resp.msg;
 			$scope.userList = resp.users;
 			$scope.loggedIn = true;
 			$scope.$apply();
@@ -82,11 +84,11 @@
 			
 		})
 		
-		function addToView(msg) {
-			var span=document.createElement("div");
-			span.appendChild(document.createTextNode(msg));
+		function addToView(resp) {
+			chatStore.set(resp);
+			$scope.chatStore = chatStore.get();
+			$scope.$digest();
 			var mesArea = document.getElementById("messages");
-			mesArea.appendChild(span);
 			mesArea.scrollTop = mesArea.scrollHeight;
 		}
 	}
